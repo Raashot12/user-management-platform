@@ -2,6 +2,8 @@
 
 This Cloudflare Worker pings the Nest API health endpoint every ten minutes. Set it up only if you want to reduce Render Free cold starts; it does not provide production uptime guarantees.
 
+The Worker is configured with `workers_dev: false`, so it does not need a public HTTP route. If this Cloudflare account has never used Workers, open the Workers section in the dashboard once and complete the `workers.dev` onboarding before deploying. Cloudflare requires that account setup to create Cron Triggers.
+
 ## Deploy
 
 From the repository root, install Wrangler if needed, then set the API health URL and deploy:
