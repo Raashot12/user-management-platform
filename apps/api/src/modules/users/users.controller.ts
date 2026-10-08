@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Patch, Post, Query } from "@nestjs/common";
-import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiParam, ApiQuery, ApiTags } from "@nestjs/swagger";
+import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiParam, ApiTags } from "@nestjs/swagger";
 import { UserAcademicsDto, UserAddressDto, UserContactDto, UserInfoDto } from "./dto/create-user.dto";
 import { PaginationQueryDto } from "./dto/pagination-query.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
@@ -48,7 +48,6 @@ export class UsersController {
 
   @Get()
   @ApiOperation({ summary: "Get a page of users with their related information" })
-  @ApiQuery({ type: PaginationQueryDto })
   @ApiOkResponse({ type: PaginatedUsersResponseDto })
   findAll(@Query() query: PaginationQueryDto) {
     return this.usersService.findAll(query.pageNumber, query.pageSize);
